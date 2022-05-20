@@ -1,0 +1,28 @@
+<article>
+  <h1>{{ article.title }}</h1>
+  <div class="article-info">
+    <p>{{ article.tag }}</p>
+    <p class="dot">&#8226;</p>
+    <p>
+      Added by
+      <span class="article-author">{{ article.author }}</span>
+    </p>
+    <p class="dot">&#8226;</p>
+    <p>{{ article.date }}</p>
+  </div>
+  <div class="article-modify">
+    <button class="btn-edit">Edit</button>
+    <span>&#124;</span>
+    <button class="btn-edit">Delete</button>
+  </div>
+  <div class="article-img">
+    <img [src]="article.imgUrl" alt="image displayed" />
+  </div>
+  <div class="article-paragraph">
+    <p>{{ article.content }}</p>
+  </div>
+  <!-- <Quote/> -->
+  <div class="article-paragraph">
+    <p>{{ article.content }}</p>
+  </div>
+</article>
