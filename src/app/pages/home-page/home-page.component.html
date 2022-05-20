@@ -1,0 +1,12 @@
+<div *ngIf="!isLoading; then thenBlock; else elseBlock"></div>
+<ng-template #thenBlock>
+  <div *ngFor="let article of articlesData">
+    <app-article [article]="article"></app-article>
+  </div>
+</ng-template>
+
+<ng-template #elseBlock>
+  <div class="loading">
+    <h1>Loading articles...</h1>
+  </div>
+</ng-template>

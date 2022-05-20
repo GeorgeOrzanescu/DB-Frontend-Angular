@@ -1,1 +1,256 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("constants.css");
+
+body {
+  max-width: 1280px;
+  margin: auto;
+}
+/* Header */
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 100px;
+  margin-top: 100px;
+}
+
+nav li {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 11px;
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+div.btn {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 130px;
+  margin-bottom: 90px;
+}
+
+button.btn-add {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.3;
+  border: 1px solid var(--color-secondary);
+  width: 300px;
+  height: 60px;
+  border-radius: 50px;
+  background: white;
+}
+
+button img {
+  vertical-align: middle;
+  max-width: 30px;
+  max-height: auto;
+}
+
+/* Main */
+
+article {
+  margin-top: 100px;
+}
+
+article div.article-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-style: normal;
+  font-size: var(--font-size-heading1);
+  line-height: 1.2;
+  width: 780px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+div.article-info p {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--color-secondary);
+  margin: 0 20px 0 0;
+}
+
+div.article-info span.article-author {
+  color: var(--color-primary);
+}
+
+div.article-modify {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;
+}
+
+button.btn-edit {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.3;
+  background: white;
+  border: none;
+}
+
+div.article-img {
+  margin-top: 20px;
+}
+
+div.article-paragraph {
+  font-family: var(--font-paragraph);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.9;
+  width: 780px;
+  text-align: justify;
+  margin: auto;
+  margin-top: 80px;
+}
+
+/* quote */
+.saying {
+  font-family: var(--montserrat-font);
+  font-size: 28px;
+  font-style: italic;
+  line-height: 30px;
+  background: var(--pink-color);
+  padding: 105px;
+  margin-right: -105px;
+  margin-left: -105px;
+  text-align: center;
+}
+
+/* Read more button */
+.readmore__container {
+  display: flex;
+  justify-content: center;
+  margin: 140px 0 100px 0;
+}
+
+.button {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.3;
+  border: 1px solid var(--color-secondary);
+  width: 300px;
+  height: 60px;
+  border-radius: 50px;
+  background: white;
+}
+
+/* Footer */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 35px 0 100px 0;
+}
+
+.footer__link {
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 34px;
+  line-height: 1.2;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.footer__link--next {
+  align-self: flex-end;
+  margin-top: -40px;
+}
+
+/* Modal */
+
+#modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  width: 1000px;
+  height: 750px;
+  border: 1px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+div.modal-body form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  row-gap: 25px;
+}
+
+.modal-header {
+  margin-top: 50px;
+}
+
+input {
+  width: 398px;
+  height: 33px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 5px;
+  padding: 0;
+  font-family: var(--font-paragraph);
+  font-size: 18px;
+  text-indent: 10px;
+  line-height: 1.2;
+}
+
+#modal #image {
+  width: 850px;
+}
+
+#modal textarea {
+  width: 848px;
+  height: 280px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 5px;
+  padding: 0;
+  resize: none;
+  text-indent: 10px;
+  font-family: var(--font-paragraph);
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+div.modal-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+button.btn-modal {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 14px;
+  border: 1px solid var(--color-secondary);
+  width: 300px;
+  height: 60px;
+  border-radius: 50px;
+  background: white;
+  margin-top: 25px;
+  margin-left: 75px;
+}
+
+button.save {
+  background: var(--color-accent);
+  margin-right: 75px;
+}
