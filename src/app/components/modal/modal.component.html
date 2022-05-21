@@ -1,0 +1,58 @@
+<div class="modal" [ngClass]="{ 'modal-open': isModalOpen }">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1>Add/Edit article</h1>
+    </div>
+    <div class="modal-body">
+      <form action="">
+        <div class="form-group">
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Please enter title"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="tag"
+            id="tag"
+            placeholder="Please enter tag"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="author"
+            id="author"
+            placeholder="Please enter author"
+          />
+        </div>
+        <div class="form-group">
+          <input name="date" id="date" placeholder="Please enter date" />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="image"
+            id="image"
+            placeholder="Please enter image url"
+          />
+        </div>
+        <div class="form-group">
+          <textarea
+            name="content"
+            id="content"
+            placeholder="Please enter content"
+            cols="{100}"
+          ></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-modal">CANCEL</button>
+      <button class="btn-modal save">SAVE</button>
+    </div>
+  </div>
+</div>

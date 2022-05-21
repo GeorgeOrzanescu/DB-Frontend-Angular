@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { IArticle } from 'src/app/models/iarticle';
 import { DataService } from 'src/app/services/data.service';
 
@@ -12,12 +13,25 @@ export class HomePageComponent implements OnInit {
 
   articlesData: IArticle[] = [];
   isLoading = false;
+  articlesSubscription = new Subscription();
+  isModalOpen = false;
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.DataService.getArticlesData().subscribe((resp) => {
-      this.articlesData = resp;
-      this.isLoading = false;
-    });
+    this.articlesSubscription = this.DataService.getArticlesData().subscribe(
+      (resp) => {
+        this.articlesData = resp;
+        this.isLoading = false;
+      }
+    );
   }
+
+  ngONDestroy(): void {
+    this.articlesSubscription.unsubscribe();
+  }
+
+  togleModal(): void {
+    this.isModalOpen = !this.isModalOpen;
+  }
+   
 }

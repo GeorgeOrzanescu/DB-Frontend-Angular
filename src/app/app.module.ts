@@ -8,6 +8,9 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 import { DetailsPageComponent } from './pages/details-page/details-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ArticleComponent } from './components/article/article.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { NavComponent } from './components/nav/nav.component';
+import { AddBtnComponent } from './components/add-btn/add-btn.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,6 +18,9 @@ import { ArticleComponent } from './components/article/article.component';
     DetailsPageComponent,
     HomePageComponent,
     ArticleComponent,
+    ModalComponent,
+    NavComponent,
+    AddBtnComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
