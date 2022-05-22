@@ -12,4 +12,8 @@ export class DataService {
   getArticlesData() {
     return this.http.get<IArticle[]>(`${articlesURL}`);
   }
+
+  getArticleData(id: number) {
+    return this.http.get<IArticle>(`${articlesURL}/${id}`);
+  }
 }

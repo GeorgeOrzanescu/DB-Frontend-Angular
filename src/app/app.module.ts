@@ -11,6 +11,7 @@ import { ArticleComponent } from './components/article/article.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { NavComponent } from './components/nav/nav.component';
 import { AddBtnComponent } from './components/add-btn/add-btn.component';
+import { ReadMoreBtnComponent } from './components/read-more-btn/read-more-btn.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { AddBtnComponent } from './components/add-btn/add-btn.component';
     ModalComponent,
     NavComponent,
     AddBtnComponent,
+    ReadMoreBtnComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

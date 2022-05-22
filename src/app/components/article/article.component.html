@@ -26,4 +26,5 @@
     <p>{{ article.content }}</p>
   </div>
 </article>
-<app-read-more-btn></app-read-more-btn>
+
+<app-read-more-btn (click)="onReadMore(article.id)"></app-read-more-btn>

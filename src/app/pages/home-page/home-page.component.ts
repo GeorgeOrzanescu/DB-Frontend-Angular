@@ -33,5 +33,4 @@ export class HomePageComponent implements OnInit {
   togleModal(): void {
     this.isModalOpen = !this.isModalOpen;
   }
-   
 }

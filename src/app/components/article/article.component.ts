@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IArticle } from 'src/app/models/iarticle';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article',
@@ -17,8 +18,13 @@ export class ArticleComponent implements OnInit {
     saying: '',
     content: '',
   };
+  showReadMoreBtn = true;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  onReadMore(id: number): void {
+    this.router.navigate(['/details', id]);
+  }
 }
