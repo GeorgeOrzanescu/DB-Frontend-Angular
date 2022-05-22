@@ -18,13 +18,35 @@
   <div class="article-img">
     <img [src]="article.imgUrl" alt="image displayed" />
   </div>
-  <div class="article-paragraph">
-    <p>{{ article.content }}</p>
+  <div *ngIf="article.content.length === 1000">
+    <div class="article-paragraph">
+      <p>{{ article.content }}</p>
+    </div>
   </div>
-  <!-- <Quote/> -->
-  <div class="article-paragraph">
-    <p>{{ article.content }}</p>
+  <div *ngIf="article.content.length > 1000">
+    <div class="article-paragraph">
+      <p>
+        {{
+          article.content
+            .split(".")
+            .slice(0, article.content.split(".").length / 2)
+            .join(".")
+        }}
+      </p>
+    </div>
+    <app-quote [quote]="article.saying"></app-quote>
+    <div class="article-paragraph">
+      <p>
+        {{
+          article.content
+            .split(".")
+            .slice(article.content.split(".").length / 2)
+            .join(".")
+        }}
+      </p>
+    </div>
   </div>
 </article>
-
-<app-read-more-btn (click)="onReadMore(article.id)"></app-read-more-btn>
+<div *ngIf="article.content.length === 1000">
+  <app-read-more-btn (click)="onReadMore(article.id)"></app-read-more-btn>
+</div>

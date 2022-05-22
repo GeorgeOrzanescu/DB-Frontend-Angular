@@ -18,11 +18,17 @@ export class ArticleComponent implements OnInit {
     saying: '',
     content: '',
   };
-  showReadMoreBtn = true;
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.article.content = this.getFirst1000Chars(this.article.content);
+    
+  }
+
+  getFirst1000Chars = (text: string) => {
+    return text.substring(0, 1000);
+  };
 
   onReadMore(id: number): void {
     this.router.navigate(['/details', id]);
