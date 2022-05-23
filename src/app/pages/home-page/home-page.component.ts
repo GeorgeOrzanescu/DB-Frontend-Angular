@@ -9,14 +9,18 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent implements OnInit {
-  constructor(private DataService: DataService) {}
+  constructor(private DataService: DataService) {
+    this.getArticlesData();
+  }
 
   articlesData: IArticle[] = [];
   isLoading = false;
   articlesSubscription = new Subscription();
   isModalOpen = false;
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  getArticlesData(): void {
     this.isLoading = true;
     this.articlesSubscription = this.DataService.getArticlesData().subscribe(
       (resp) => {

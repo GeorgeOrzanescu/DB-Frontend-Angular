@@ -12,6 +12,10 @@ import { ModalComponent } from './components/modal/modal.component';
 import { NavComponent } from './components/nav/nav.component';
 import { AddBtnComponent } from './components/add-btn/add-btn.component';
 import { ReadMoreBtnComponent } from './components/read-more-btn/read-more-btn.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { QuoteComponent } from './components/quote/quote.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,8 +27,10 @@ import { ReadMoreBtnComponent } from './components/read-more-btn/read-more-btn.c
     NavComponent,
     AddBtnComponent,
     ReadMoreBtnComponent,
+    FooterComponent,
+    QuoteComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
