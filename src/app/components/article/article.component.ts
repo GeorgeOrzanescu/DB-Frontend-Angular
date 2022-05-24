@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IArticle } from 'src/app/models/iarticle';
 import { Router } from '@angular/router';
 
@@ -18,6 +18,8 @@ export class ArticleComponent implements OnInit {
     saying: '',
     content: '',
   };
+  @Output() selectArticle: EventEmitter<IArticle> =
+    new EventEmitter<IArticle>();
 
   constructor(private router: Router) {}
 
@@ -31,5 +33,9 @@ export class ArticleComponent implements OnInit {
 
   onReadMore(id: number): void {
     this.router.navigate(['/details', id]);
+  }
+
+  editArticle() {
+    this.selectArticle.emit(this.article);
   }
 }

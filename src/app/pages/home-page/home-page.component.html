@@ -1,12 +1,15 @@
 <!-- navigation component -->
 <app-nav></app-nav>
 <!-- Add button component -->
-<app-add-btn (click)="togleModal()"></app-add-btn>
+<app-add-btn (click)="openModal()"></app-add-btn>
 <!-- Article component -->
 <div *ngIf="!isLoading; then thenBlock; else elseBlock"></div>
 <ng-template #thenBlock>
   <div *ngFor="let article of articlesDisplayed">
-    <app-article [article]="article"></app-article>
+    <app-article
+      [article]="article"
+      (selectArticle)="selectArticle($event)"
+    ></app-article>
   </div>
 </ng-template>
 
@@ -17,7 +20,12 @@
 </ng-template>
 
 <!-- Modal component -->
-<app-modal [isModalOpen]="isModalOpen"></app-modal>
+<app-modal
+  [isModalOpen]="isModalOpen"
+  [articleSelected]="articleSelected"
+  (toggleModal)="toggleModal($event)"
+  (resetArticleForm)="resetArticleForm()"
+></app-modal>
 <footer class="footer">
   <button class="footer__link" (click)="prevPage()">previous</button>
   <button class="footer__link footer__link--next" (click)="nextPage()">

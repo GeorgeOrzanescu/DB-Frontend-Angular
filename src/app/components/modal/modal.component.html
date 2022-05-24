@@ -62,7 +62,13 @@
     </div>
     <div class="modal-footer">
       <button class="btn-modal" (click)="closeModal()">CANCEL</button>
-      <button class="btn-modal save" (click)="onSubmit()">SAVE</button>
+      <div *ngIf="articleSelected.id > 0; then thenBlock; else elseBlock"></div>
+      <ng-template #thenBlock>
+        <button class="btn-modal save" (click)="updateArticle()">UPDATE</button>
+      </ng-template>
+      <ng-template #elseBlock>
+        <button class="btn-modal save" (click)="onSubmit()">SAVE</button>
+      </ng-template>
     </div>
   </div>
 </div>

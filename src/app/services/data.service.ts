@@ -19,4 +19,8 @@ export class DataService {
   postArticleData(article: IArticle) {
     return this.http.post<IArticle>(`${articlesURL}`, article);
   }
+
+  putArticleData(article: IArticle) {
+    return this.http.put<IArticle>(`${articlesURL}/${article.id}`, article);
+  }
 }

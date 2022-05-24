@@ -11,6 +11,7 @@ import {
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { IArticle } from 'src/app/models/iarticle';
 
 @Component({
   selector: 'app-modal',
@@ -20,7 +21,17 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class ModalComponent implements OnInit, OnDestroy, OnChanges {
   @Input() isModalOpen: boolean;
   @Output() toggleModal: EventEmitter<boolean> = new EventEmitter<boolean>();
-
+  @Output() resetArticleForm: EventEmitter<string> = new EventEmitter<string>();
+  @Input() articleSelected: IArticle = {
+    id: 0,
+    title: '',
+    tag: '',
+    author: '',
+    date: '',
+    imgUrl: '',
+    saying: '',
+    content: '',
+  };
   articleForm = new FormGroup({});
 
   addArticleSubscription = new Subscription();
@@ -33,12 +44,12 @@ export class ModalComponent implements OnInit, OnDestroy, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (true) {
       this.articleForm = new FormGroup({
-        title: new FormControl(''),
-        tag: new FormControl(''),
-        author: new FormControl(''),
-        date: new FormControl(''),
-        imgUrl: new FormControl(''),
-        content: new FormControl(''),
+        title: new FormControl(this.articleSelected.title),
+        tag: new FormControl(this.articleSelected.tag),
+        author: new FormControl(this.articleSelected.author),
+        date: new FormControl(this.articleSelected.date),
+        imgUrl: new FormControl(this.articleSelected.imgUrl),
+        content: new FormControl(this.articleSelected.content),
       });
     }
   }
@@ -51,6 +62,7 @@ export class ModalComponent implements OnInit, OnDestroy, OnChanges {
   closeModal() {
     this.isModalOpen = false;
     this.toggleModal.emit(this.isModalOpen);
+    this.resetArticleForm.emit('');
   }
 
   onSubmit() {
@@ -60,6 +72,22 @@ export class ModalComponent implements OnInit, OnDestroy, OnChanges {
       .subscribe((resp) => {
         this.closeModal();
       });
+    this.resetArticleForm.emit('');
     location.reload();
+  }
+
+  updateArticle() {
+    const body = {
+      ...this.articleForm.getRawValue(),
+      id: this.articleSelected.id,
+    };
+    this.addArticleSubscription = this.dataService
+      .putArticleData(body)
+      .subscribe((response) => {
+        console.log(response);
+        this.resetArticleForm.emit('');
+        this.closeModal();
+        location.reload();
+      });
   }
 }

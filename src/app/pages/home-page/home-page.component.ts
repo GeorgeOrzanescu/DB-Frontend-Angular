@@ -23,6 +23,17 @@ export class HomePageComponent implements OnInit {
   startIndex = 0;
   endIndex = 0 + this.numberOfArticles - 1;
 
+  articleSelected: IArticle = {
+    id: 0,
+    title: '',
+    tag: '',
+    author: '',
+    date: '',
+    imgUrl: '',
+    saying: '',
+    content: '',
+  };
+
   ngOnInit(): void {}
 
   getArticlesData(): void {
@@ -42,8 +53,12 @@ export class HomePageComponent implements OnInit {
     this.articlesSubscription.unsubscribe();
   }
 
-  togleModal(): void {
-    this.isModalOpen = !this.isModalOpen;
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  toggleModal(modalState: boolean): void {
+    this.isModalOpen = modalState;
   }
 
   prevPage() {
@@ -64,5 +79,23 @@ export class HomePageComponent implements OnInit {
         (d, i) => i >= this.startIndex && i <= this.endIndex
       );
     }
+  }
+
+  selectArticle(selectArticle: IArticle) {
+    this.articleSelected = selectArticle;
+    this.openModal();
+  }
+
+  resetArticleForm() {
+    this.articleSelected = {
+      id: 0,
+      title: '',
+      tag: '',
+      author: '',
+      date: '',
+      imgUrl: '',
+      saying: '',
+      content: '',
+    };
   }
 }
