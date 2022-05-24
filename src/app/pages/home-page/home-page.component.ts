@@ -18,6 +18,11 @@ export class HomePageComponent implements OnInit {
   articlesSubscription = new Subscription();
   isModalOpen = false;
 
+  articlesDisplayed: IArticle[] = [];
+  numberOfArticles = 3;
+  startIndex = 0;
+  endIndex = 0 + this.numberOfArticles - 1;
+
   ngOnInit(): void {}
 
   getArticlesData(): void {
@@ -25,6 +30,9 @@ export class HomePageComponent implements OnInit {
     this.articlesSubscription = this.DataService.getArticlesData().subscribe(
       (resp) => {
         this.articlesData = resp;
+        this.articlesDisplayed = resp.filter(
+          (d, i) => i >= this.startIndex && i <= this.endIndex
+        );
         this.isLoading = false;
       }
     );
@@ -36,5 +44,25 @@ export class HomePageComponent implements OnInit {
 
   togleModal(): void {
     this.isModalOpen = !this.isModalOpen;
+  }
+
+  prevPage() {
+    if (this.startIndex - this.numberOfArticles >= 0) {
+      this.startIndex = this.startIndex - this.numberOfArticles;
+      this.endIndex = this.endIndex - this.numberOfArticles;
+      this.articlesDisplayed = this.articlesData.filter(
+        (d, i) => i >= this.startIndex && i <= this.endIndex
+      );
+    }
+  }
+
+  nextPage() {
+    if (this.startIndex + this.numberOfArticles <= this.articlesData.length) {
+      this.startIndex = this.startIndex + this.numberOfArticles;
+      this.endIndex = this.endIndex + this.numberOfArticles;
+      this.articlesDisplayed = this.articlesData.filter(
+        (d, i) => i >= this.startIndex && i <= this.endIndex
+      );
+    }
   }
 }

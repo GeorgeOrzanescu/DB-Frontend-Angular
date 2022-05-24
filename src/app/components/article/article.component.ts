@@ -23,7 +23,6 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit(): void {
     this.article.content = this.getFirst1000Chars(this.article.content);
-    
   }
 
   getFirst1000Chars = (text: string) => {
