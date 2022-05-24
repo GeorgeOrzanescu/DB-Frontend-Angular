@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IArticle } from 'src/app/models/iarticle';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-article',
@@ -21,7 +23,9 @@ export class ArticleComponent implements OnInit {
   @Output() selectArticle: EventEmitter<IArticle> =
     new EventEmitter<IArticle>();
 
-  constructor(private router: Router) {}
+  articlesSubscription = new Subscription();
+
+  constructor(private router: Router, private dataService: DataService) {}
 
   ngOnInit(): void {
     this.article.content = this.getFirst1000Chars(this.article.content);
@@ -37,5 +41,13 @@ export class ArticleComponent implements OnInit {
 
   editArticle() {
     this.selectArticle.emit(this.article);
+  }
+
+  deleteArticle() {
+    this.articlesSubscription = this.dataService
+      .deleteArticleData(this.article.id)
+      .subscribe((response) => {
+        location.reload();
+      });
   }
 }

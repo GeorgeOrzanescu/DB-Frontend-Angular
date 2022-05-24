@@ -23,4 +23,8 @@ export class DataService {
   putArticleData(article: IArticle) {
     return this.http.put<IArticle>(`${articlesURL}/${article.id}`, article);
   }
+
+  deleteArticleData(id: number) {
+    return this.http.delete<IArticle>(`${articlesURL}/${id}`);
+  }
 }

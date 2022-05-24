@@ -13,7 +13,7 @@
   <div class="article-modify">
     <button class="btn-edit" (click)="editArticle()">Edit</button>
     <span>&#124;</span>
-    <button class="btn-edit">Delete</button>
+    <button class="btn-edit" (click)="deleteArticle()">Delete</button>
   </div>
   <div class="article-img">
     <img [src]="article.imgUrl" alt="image displayed" />
